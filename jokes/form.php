@@ -7,13 +7,16 @@
     </p>
     <p>
       <label for="authorid">Author</label><br/>
+	  <?php
+	  $authors = array( 
+		array('label'=>'author 1', 'value'=>1), 
+		array('label'=>'author 2', 'value'=>2), 
+		);
+		?>
       <select name="authorid" id="authorid">
-        <option>
-          author 1
-        </option>
-        <option>
-          author 2
-        </option>
+       <?php foreach ($authors as $author) { ?>
+		<option value='<?php echo $author['value']; ?>'><?php echo $author['label']; ?></option>
+	   <?php } ?>
       </select>
     </p>
 	
