@@ -16,6 +16,8 @@ switch ($action) {
   
   case 'edit':
     $title = 'Edit this joke';
+	$joke = getJoke($_GET['jokeid']);
+	var_dump($joke);
     $output = 'jokes/form.php';
     break;
   
