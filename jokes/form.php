@@ -1,4 +1,4 @@
-<h1>foo</h1>
+
 <form method="post" action="index.php?action=update&jokeid=<?php echo $joke['id']; ?>">
 
   <fieldset>
@@ -9,19 +9,16 @@
     <p>
       <label for="authorid">Author</label><br/>
 	  <?php
-	  $authors = array( 
-		array('label'=>'author 1', 'value'=>1), 
-		array('label'=>'author 2', 'value'=>2), 
-		);
-		$current_values = array("2");
+	  
+		
 		?>
       <select name="authorid" id="authorid">
        <?php 
 	   foreach ($authors as $author) { 
 		  $selected = '';
-      if (in_array($author['value'], $current_values)) { $selected = "selected='selected'"; }
+      if ($author['id'] == $joke['authorid']) { $selected = "selected='selected'"; }
 	   ?>
-		<option value='<?php echo $author['value']; ?>' <?php echo $selected; ?>><?php echo $author['label']; ?></option>
+		<option value='<?php echo $author['id']; ?>' <?php echo $selected; ?>><?php echo $author['name']; ?></option>
 	   <?php } ?>
       </select>
     </p>

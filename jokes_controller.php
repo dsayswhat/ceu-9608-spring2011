@@ -5,6 +5,7 @@ $default_action = 'list';
 
 require_once('includes/init.php');
 require_once('includes/jokes_db.php');
+require_once('includes/authors_db.php');
 
 switch ($action) {
   
@@ -16,7 +17,8 @@ switch ($action) {
   
   case 'edit':
     $title = 'Edit this joke';
-	$joke = getJoke($_GET['jokeid']);
+    $joke = getJoke($_GET['jokeid']);
+    $authors = listAuthors();
     $output = 'jokes/form.php';
     break;
   
