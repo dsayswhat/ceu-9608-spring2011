@@ -10,7 +10,7 @@
   <tr>
     <td><?php echo $j['joketext']; ?></td>
     <td><?php echo $j['name']; ?></td>
-    <td><a href="index.php?action=edit&jokeid=<?php echo $j['id']; ?>">Edit</a></td>
+    <td><a href="jokes_controller.php?action=edit&jokeid=<?php echo $j['id']; ?>">Edit</a></td>
     <td><a href="">Delete</a></td>
   </tr>
 <?php } ?>

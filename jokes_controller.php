@@ -4,7 +4,7 @@
 $default_action = 'list';
 
 require_once('includes/init.php');
-require_once('includes/jokes.php');
+require_once('includes/jokes_db.php');
 
 switch ($action) {
   

@@ -1,5 +1,3 @@
-<h2>I'm an HTML form for joke entry/updates.</h2>
-<?php /* ?>
 <form method="post" action="index.php?action=update&jokeid=<?php echo $joke['id']; ?>">
 
   <fieldset>
@@ -24,4 +22,3 @@
     <input type="hidden" name="jokeid" value="" />
   </fieldset>
 </form>
-<?php */ ?>
