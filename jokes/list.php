@@ -1,3 +1,5 @@
+<p class="right"><a href="jokes_controller.php?action=new">Add a new joke</a></p>
+
 <table>
   <tr>
     <th>Joke</th>
