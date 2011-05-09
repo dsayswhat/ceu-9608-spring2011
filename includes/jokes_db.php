@@ -52,7 +52,6 @@ function updateJoke($data) {
   $data = scrubData($data);
  
   $qry = "update joke set joketext = '{$data['joketext']}', authorid = {$data['authorid']}, jokedate = curdate() where id = {$data['jokeid']}";
-  print_r($qry);
   
   if (!mysqli_query($db, $qry))
 	{
