@@ -1,5 +1,5 @@
 
-<form method="post" action="jokes_controller.php?action=update&jokeid=<?php echo $joke['id']; ?>">
+<form method="post" action="jokes_controller.php?action=save">
 
   <fieldset>
     <p>

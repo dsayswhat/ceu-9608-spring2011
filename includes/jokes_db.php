@@ -54,7 +54,7 @@ function saveJoke($data) {
   if ($data['jokeid']) {
     $qry = "update joke set joketext = '{$data['joketext']}', authorid = {$data['authorid']}, jokedate = curdate() where id = {$data['jokeid']}";
   }else{
-    $qry = "insert into joke (NULL, '{$data['joketext']}', {$data['authorid']}, curdate()";
+    $qry = "insert into joke values (NULL, '{$data['joketext']}', curdate(), {$data['authorid']})";
   }
  
   if (!mysqli_query($db, $qry))
