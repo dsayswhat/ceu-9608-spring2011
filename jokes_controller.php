@@ -23,6 +23,14 @@ switch ($action) {
     $output = 'jokes/form.php';
     break;
   
+  case 'new':
+    $title = "New joke";
+    $authors = listAuthors();
+    
+    $output = "jokes/form.php";
+        
+    break;
+    
   case 'update':
     if ($result = updateJoke($_POST)) {
       header("Location: jokes_controller.php?action=list");
