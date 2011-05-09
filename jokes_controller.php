@@ -6,6 +6,7 @@ $default_action = 'list';
 require_once('includes/init.php');
 require_once('includes/jokes_db.php');
 require_once('includes/authors_db.php');
+require_once('includes/helpers.php');
 
 switch ($action) {
   
@@ -20,6 +21,12 @@ switch ($action) {
     $joke = getJoke($_GET['jokeid']);
     $authors = listAuthors();
     $output = 'jokes/form.php';
+    break;
+  
+  case 'update':
+    if ($result = updateJoke($_POST)) {
+      header("Location: jokes_controller.php?action=list");
+    }
     break;
   
   case 'delete':

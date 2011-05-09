@@ -8,7 +8,7 @@ function listJokes() {
 	
 	if (!$result)
 	{
-		$error = 'Error fetching jokes: ' . mysql_error();
+		$error = 'Error fetching jokes: ' . mysqli_error($db);
 		include 'error.php';
 		exit();
 	}
@@ -29,7 +29,7 @@ function getJoke($id) {
 	
 	if (!$result)
 	{
-		$error = "Error fetching joke $id: " . mysql_error();
+		$error = "Error fetching joke $id: " . mysqli_error($db);
 		include 'error.php';
 		exit();
 	}
@@ -42,4 +42,24 @@ function getJoke($id) {
 		include 'error.php';
 		exit();
 	}
+}
+
+
+
+function updateJoke($data) {
+  global $db;
+  
+  $data = scrubData($data);
+ 
+  $qry = "update joke set joketext = '{$data['joketext']}', authorid = {$data['authorid']}, jokedate = curdate() where id = {$data['jokeid']}";
+  print_r($qry);
+  
+  if (!mysqli_query($db, $qry))
+	{
+	$error = "Error saving joke {$data['jokeid']}: " . mysqli_error($db);
+		include 'error.php';
+		exit();
+	}else{
+    return TRUE;
+  }
 }
