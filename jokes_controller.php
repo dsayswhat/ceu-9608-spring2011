@@ -25,6 +25,7 @@ switch ($action) {
   
   case 'new':
     $title = "New joke";
+    $joke = emptyJoke();
     $authors = listAuthors();
     
     $output = "jokes/form.php";

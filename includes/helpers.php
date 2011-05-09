@@ -11,3 +11,11 @@ function scrubData($data = array()) {
   }
   return $cleandata;
 }
+
+function emptyJoke() {
+	return array(
+		'id' => 0,
+		'joketext' => '',
+		'authorid' => 0,
+	);
+}
