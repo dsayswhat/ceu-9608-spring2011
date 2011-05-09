@@ -46,13 +46,17 @@ function getJoke($id) {
 
 
 
-function updateJoke($data) {
+function saveJoke($data) {
   global $db;
   
   $data = scrubData($data);
- 
-  $qry = "update joke set joketext = '{$data['joketext']}', authorid = {$data['authorid']}, jokedate = curdate() where id = {$data['jokeid']}";
   
+  if ($data['jokeid']) {
+    $qry = "update joke set joketext = '{$data['joketext']}', authorid = {$data['authorid']}, jokedate = curdate() where id = {$data['jokeid']}";
+  }else{
+    $qry = "insert into joke (NULL, '{$data['joketext']}', {$data['authorid']}, curdate()";
+  }
+ 
   if (!mysqli_query($db, $qry))
 	{
 	$error = "Error saving joke {$data['jokeid']}: " . mysqli_error($db);

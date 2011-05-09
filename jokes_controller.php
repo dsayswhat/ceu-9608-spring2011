@@ -32,8 +32,8 @@ switch ($action) {
         
     break;
     
-  case 'update':
-    if ($result = updateJoke($_POST)) {
+  case 'save':
+    if ($result = saveJoke($_POST)) {
       header("Location: jokes_controller.php?action=list");
     }
     break;
