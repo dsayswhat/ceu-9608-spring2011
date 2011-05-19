@@ -9,11 +9,7 @@
 	<body>
 		<p>
 			<?php echo $error; ?>
-      <?php
-        if (mysql_errno()) {
-         echo mysql_error();
-       }
-      ?>
+    
 		</p>
 	</body>
 </html>

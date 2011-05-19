@@ -1,10 +1,14 @@
 <?php
+session_start();
 // set up default action...
 if (! array_key_exists('action', $_GET)) {
   $action = $default_action;
 }else{
   $action = $_GET['action'];
 }
+
+// container for messages that we'll show to the user.
+$messages = array();
 
 
 $db = mysqli_connect('localhost', 'test', 'Delicios0');

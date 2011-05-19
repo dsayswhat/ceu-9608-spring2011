@@ -11,7 +11,11 @@
     <![endif]-->
 	</head>
 	<body>
+	
     <h1><?php echo $title; ?></h1>
+    
+	<?php include('includes/messages.php'); ?>
+    
     <?php include($output); ?>
   </body>
 </html>

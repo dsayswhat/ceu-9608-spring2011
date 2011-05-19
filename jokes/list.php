@@ -13,7 +13,7 @@
     <td><?php echo $j['joketext']; ?></td>
     <td><?php echo $j['name']; ?></td>
     <td><a href="jokes_controller.php?action=edit&jokeid=<?php echo $j['id']; ?>">Edit</a></td>
-    <td><a href="">Delete</a></td>
+    <td><a href="jokes_controller.php?action=delete&jokeid=<?php echo $j['id']; ?>">Delete</a></td>
   </tr>
 <?php } ?>
 

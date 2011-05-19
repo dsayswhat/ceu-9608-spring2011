@@ -21,26 +21,36 @@ function listJokes() {
 	return $jokes;
 }
 
-function getJoke($id) {
+function getJoke($id=0) {
 	global $db;
 	
-	$qry = "select * from joke where id = " . mysqli_real_escape_string($db, $id);
-	$result = mysqli_query($db, $qry);
-	
-	if (!$result)
-	{
-		$error = "Error fetching joke $id: " . mysqli_error($db);
-		include 'error.php';
-		exit();
-	}
-	
-	$joke = mysqli_fetch_assoc($result);
-	if ($joke) {
-		return $joke;
+	if ($id) {
+		
+		$qry = "select * from joke where id = " . mysqli_real_escape_string($db, $id);
+		$result = mysqli_query($db, $qry);
+		
+		if (!$result)
+		{
+			$error = "Error fetching joke $id: " . mysqli_error($db);
+			include 'error.php';
+			exit();
+		}
+		
+		$joke = mysqli_fetch_assoc($result);
+		if ($joke) {
+			return $joke;
+		}else{
+			$error = "Error: no such joke: $id";
+			include 'error.php';
+			exit();
+		}
 	}else{
-		$error = "Error: no such joke: $id";
-		include 'error.php';
-		exit();
+		return array(
+			'id' => 0,
+			'joketext' => '',
+			'authorid' => 0,
+		);
+		
 	}
 }
 
@@ -60,6 +70,20 @@ function saveJoke($data) {
   if (!mysqli_query($db, $qry))
 	{
 	$error = "Error saving joke {$data['jokeid']}: " . mysqli_error($db);
+		include 'error.php';
+		exit();
+	}else{
+    return TRUE;
+  }
+}
+
+function deleteJoke($data) {
+  $data = scrubData($data);
+  $qry = "delete from joke where id = {$data['id']}";
+  
+  if (!mysqli_query($db, $qry))
+	{
+    $error = "Error saving joke {$data['jokeid']}: " . mysqli_error($db);
 		include 'error.php';
 		exit();
 	}else{

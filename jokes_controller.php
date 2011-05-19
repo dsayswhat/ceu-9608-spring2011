@@ -13,7 +13,8 @@ switch ($action) {
   case 'list':
     $jokes = listJokes();
     $title = 'Joke list';
-    $output = 'jokes/list.php';    
+    $output = 'jokes/list.php';
+  
     break;
   
   case 'edit':
@@ -25,7 +26,7 @@ switch ($action) {
   
   case 'new':
     $title = "New joke";
-    $joke = emptyJoke();
+    $joke = getJoke();
     $authors = listAuthors();
     
     $output = "jokes/form.php";
@@ -42,6 +43,13 @@ switch ($action) {
     $title = 'Delete this joke';
     $output = 'jokes/confirm_delete.php';
     break;
+  
+  case 'deletenow':
+    // if ($result = deleteJoke($_POST)) {
+      setMessage("Joke {$_POST['jokeid']} has been deleted.");
+      session_write_close();
+      header("Location: jokes_controller.php?action=list");
+    // }
 }
 
 include('page.php' );

@@ -19,3 +19,7 @@ function emptyJoke() {
 		'authorid' => 0,
 	);
 }
+
+function setMessage($msg, $type="notice") {
+  $_SESSION['messages'][$type][] = $msg;
+}
