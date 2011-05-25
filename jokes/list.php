@@ -19,6 +19,8 @@
 
 </table>
 
+<div class="push-8"><?php echo paginationControl($totalJokes); ?></div>
+
 <?php /*
        
        <?php foreach ($jokes as $j) { ?>

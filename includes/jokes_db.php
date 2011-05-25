@@ -1,9 +1,14 @@
 <?php
 
-function listJokes() {
+function listJokes($page=1) {
 	global $db;
-	
-  $qry = 'select j.id, j.joketext, a.name, a.email from joke j inner join author a on j.authorid = a.id';
+
+	$limit = $_SESSION['records_per_page'];
+	$offset = $limit * ($page-1);
+
+// $qry = "select j.id, j.joketext, a.name, a.email from joke j, author a where j.authorid = a.id limit $limit";
+// select * from table inner join other table on id = foreign_key_id
+  $qry = "select j.id, j.joketext, a.name, a.email from joke j inner join author a on j.authorid = a.id limit $offset,$limit";
   $result = mysqli_query($db, $qry);
 	
 	if (!$result)
@@ -19,6 +24,11 @@ function listJokes() {
 	}
 
 	return $jokes;
+}
+
+function countJokes() {
+	// use count sql function to get total number of jokes in db.
+	return 5;
 }
 
 function getJoke($id=0) {

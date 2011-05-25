@@ -11,7 +11,8 @@ require_once('includes/helpers.php');
 switch ($action) {
   
   case 'list':
-    $jokes = listJokes();
+    $jokes = listJokes($page);
+    $totalJokes = countJokes();
     $title = 'Joke list';
     $output = 'jokes/list.php';
   

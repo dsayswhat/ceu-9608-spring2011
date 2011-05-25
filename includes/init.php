@@ -1,5 +1,12 @@
 <?php
+
+
+
 session_start();
+
+// includes for common components
+require_once('pagination.php');
+
 // set up default action...
 if (! array_key_exists('action', $_GET)) {
   $action = $default_action;
@@ -9,6 +16,7 @@ if (! array_key_exists('action', $_GET)) {
 
 // container for messages that we'll show to the user.
 $messages = array();
+
 
 
 $db = mysqli_connect('localhost', 'test', 'Delicios0');
